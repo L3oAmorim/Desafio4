@@ -1,0 +1,30 @@
+<div class="converter">
+  <h1>Conversor de Moedas</h1>
+  <div>
+    <label for="valorBRL">Valor em BRL:</label><br>
+    <input type="number" id="valorBRL" placeholder="Insira o valor em BRL" [(ngModel)]="valorBRL">
+    <button (click)="converter()">Converter</button>
+  </div>
+  <div>
+    <br><br><label for="moeda">Converter para:</label>
+    <select id="moeda" (change)="atualizarMoeda($event)">
+      <option value="USD">Dólar Americano (USD)</option>
+      <option value="EUR">Euro (EUR)</option>
+      <option value="GBP">Libra Esterlina (GBP)</option>
+      <option value="JPY">Iene (JPY)</option>
+      <option value="CHF">Franco Suíço (CHF)</option>
+      <option value="CAD">Dólar Canadense (CAD)</option>
+      <option value="ARS">Peso argentino (ARS)</option>
+      <option value="UYU">Peso uruguaio (UYU)</option>
+      <option value="AUD">Dólar Australiano (AUD)</option>
+      <option value="DKK">Coroa dinamarquesa (DKK)</option>
+      <option value="EGP">Libra egípcia (EGP)</option>
+    </select>
+  </div>
+  <div id="resultado">
+    <br><br>Resultado: {{ valorConvertido | number:'1.2-2' }}
+  </div>
+  <div id="taxa-conversao">
+    <br><br>Taxa de Conversão: 1 BRL = {{ taxaConversao }} {{ moedaSelecionada }}
+  </div>
+</div>

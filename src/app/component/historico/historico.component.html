@@ -1,0 +1,33 @@
+<div class="historico">
+  <h1>Histórico de Conversões</h1>
+    <div class="botao">
+      <button (click)="alternarExibicaoAltoValor()">
+        {{ exibirAltoValor ? 'Mostrar Todos' : 'Mostrar Alto Valor' }}
+      </button>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Data e Hora</th>
+          <th>Valor em BRL</th>
+          <th>Valor Convertido</th>
+          <th>Moeda</th>
+          <th>Taxa de Conversão</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let conversao of historico; let i = index" [hidden]="exibirAltoValor && conversao.valorBRL < valorAlto">
+          <td>{{ conversao.data | date:'short' }}</td>
+          <td>{{ conversao.valorBRL | number:'1.2-2' }}</td>
+          <td>{{ conversao.valorConvertido | number:'1.2-2' }}</td>
+          <td>{{ conversao.moeda }}</td>
+          <td>{{ conversao.taxaConversao | number:'1.2-2' }}</td>
+          <td>
+            <button (click)="excluirConversao(i)">Excluir</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+</div>
